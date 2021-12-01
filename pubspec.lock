@@ -46,9 +46,11 @@ packages:
   darin:
     dependency: "direct main"
     description:
-      path: "../darin"
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: b0b40825174a6cab1e49fc9abaa41e248701560a
+      url: "https://github.com/TamasBarta/darin.git"
+    source: git
     version: "0.0.1"
   fake_async:
     dependency: transitive
