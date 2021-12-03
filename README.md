@@ -1,39 +1,69 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+[![Flutter](https://github.com/TamasBarta/darin_flutter/actions/workflows/flutter.yml/badge.svg?branch=main)](https://github.com/TamasBarta/darin_flutter/actions/workflows/flutter.yml)
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Flutter inherited widget for Darin scopes.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+For features of Darin, and the explanation of the concept, see the main package: [https://github.com/TamasBarta/darin](Darin)
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Import the package (published to pub.dev soon):
+
+```yml
+dependencies:
+  darin_flutter:
+    git: https://github.com/TamasBarta/darin_flutter.git
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+You can use the `Darin` inherited widget to pass scopes down the widget tree. Down the tree you can then get objects with their dependencies resolved, and new scopes with new `Darin` inherited widgets.
 
 ```dart
-const like = 'sample';
+// Declare your modules
+final exampleModule = Module(
+  (module) => module
+    ..factory((module) => MyFeatureScreen(module.get()),
+);
+
+// Concat all your modules from all your packages, if you have multiple
+compileModules() => Module.fromModules(
+      [
+        exampleModule,
+      ],
+    );
+
+// Wrap your application widgets in a `Darin` widget, do you can query
+// objects down the tree
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Darin(
+      module: compileModules(),
+      // `Builder` is used, so `builderContext` already can be used
+      // for widget inheritance, so Darin is already available here
+      child: Builder(
+        builder: (builderContext) => MaterialApp(
+          title: 'Darin Demo',
+          ... 
+        ),
+      ),
+    );
+  }
+}
+
+// And somewhere lower in the widget tree, you can obtain objects,
+// or create new scopes.
+Widget build(BuidlContext context) {
+  return Text(context.darinGet(qualifier: "MyStringTitle"))
+}
+
+// Use can use `.of()` style static functions as well instead of
+// the extension methods on `BuildContext`.
+Widget build(BuidlContext context) {
+  return Text(Darin.get(context, qualifier: "MyStringTitle"))
+}
 ```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
