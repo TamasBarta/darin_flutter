@@ -4,7 +4,7 @@ Flutter inherited widget for Darin scopes.
 
 ## Features
 
-For features of Darin, and the explanation of the concept, see the main package: [https://github.com/TamasBarta/darin](Darin)
+For features of Darin, and the explanation of the concept, see the main package: [Darin](https://github.com/TamasBarta/darin)
 
 ## Getting started
 
