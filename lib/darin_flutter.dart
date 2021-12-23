@@ -27,6 +27,10 @@ class Darin extends InheritedWidget {
   static T get<T>(BuildContext context, {dynamic qualifier}) =>
       scopeOf(context).get<T>(qualifier: qualifier);
 
+  static T Function() getProvider<T>(BuildContext context,
+          {dynamic qualifier}) =>
+      scopeOf(context).getProvider(qualifier: qualifier);
+
   static T getMap<T extends Map>(BuildContext context, {dynamic qualifier}) =>
       scopeOf(context).getMap<T>(qualifier: qualifier);
 
@@ -41,6 +45,9 @@ extension DarinContext on BuildContext {
   Module darinScope() => Darin.scopeOf(this);
 
   T darinGet<T>({dynamic qualifier}) => Darin.get(this, qualifier: qualifier);
+
+  T Function() darinGetProvider<T>({dynamic qualifier}) =>
+      Darin.getProvider(this, qualifier: qualifier);
 
   T darinGetMap<T extends Map>({dynamic qualifier}) =>
       Darin.getMap(this, qualifier: qualifier);

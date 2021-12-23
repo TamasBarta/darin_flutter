@@ -1,6 +1,6 @@
 name: darin_flutter
 description: Flutter inherited widget for Darin scopes.
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/TamasBarta/darin_flutter
 
 environment:
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  darin: ^0.0.1
+  darin: ^0.0.2
 
 dev_dependencies:
   flutter_test:
