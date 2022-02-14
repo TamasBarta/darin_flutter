@@ -39,6 +39,10 @@ class Darin extends InheritedWidget {
 
   static Module newScopeOf<T>(BuildContext context, T target) =>
       scopeOf(context).scope(target);
+
+  static Module Function() newScopeProviderOf<T>(
+          BuildContext context, T target) =>
+      scopeOf(context).scopeProvider(target);
 }
 
 extension DarinContext on BuildContext {
@@ -56,4 +60,7 @@ extension DarinContext on BuildContext {
       Darin.getSet(this, qualifier: qualifier);
 
   Module newDarinScope<T>(T target) => Darin.newScopeOf(this, target);
+
+  Module Function() newDarinScopeProvider<T>(T target) =>
+      Darin.newScopeProviderOf(this, target);
 }

@@ -1,3 +1,7 @@
+## 0.0.3
+
+Added support for injecting providers of scopes too.
+
 ## 0.0.2
 
 Added support for provider injection (lazy dependencies).
