@@ -1,3 +1,7 @@
+## 0.0.4
+
+BREAKING CHANGE: Fixed the `Darin` widget only accepting a child, now it accepts a `WidgetBuilder` instead, because a `BuildContext` is required to actually use the new scope.
+
 ## 0.0.3
 
 Added support for injecting providers of scopes too.

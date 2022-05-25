@@ -13,9 +13,7 @@ void main() {
     await tester.pumpWidget(
       Darin(
         module: module,
-        child: Builder(
-          builder: (context) => MaterialApp(home: Text(context.darinGet())),
-        ),
+        builder: (context) => MaterialApp(home: Text(context.darinGet())),
       ),
     );
 

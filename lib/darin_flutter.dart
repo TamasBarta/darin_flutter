@@ -1,14 +1,14 @@
 library darin_flutter;
 
 import 'package:darin/darin.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class Darin extends InheritedWidget {
-  const Darin({
+  Darin({
     Key? key,
     required this.module,
-    required Widget child,
-  }) : super(key: key, child: child);
+    required WidgetBuilder builder,
+  }) : super(key: key, child: Builder(builder: builder));
 
   final Module module;
 
