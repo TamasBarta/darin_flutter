@@ -21,16 +21,16 @@ dependencies:
 You can use the `Darin` inherited widget to pass scopes down the widget tree. Down the tree you can then get objects with their dependencies resolved, and new scopes with new `Darin` inherited widgets.
 
 ```dart
-// Declare your modules
-final exampleModule = Module(
-  (module) => module
-    ..factory((module) => MyFeatureScreen(module.get()),
+// Declare your scopes
+final exampleScope = Scope(
+  (scope) => scope
+    ..factory((scope) => MyFeatureScreen(scope.get()),
 );
 
-// Concat all your modules from all your packages, if you have multiple
-compileModules() => Module.fromModules(
+// Concat all your scopes from all your packages, if you have multiple
+compileScopes() => Scope.fromScopes(
       [
-        exampleModule,
+        exampleScope,
       ],
     );
 
@@ -42,7 +42,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Darin(
-      module: compileModules(),
+      scope: compileScopes(),
       // `Builder` is used, so `builderContext` already can be used
       // for widget inheritance, so Darin is already available here
       child: Builder(
