@@ -1,3 +1,10 @@
+## 0.1.0
+
+BREAKING CHANGES:
+
+- Renamed all module terminology to scope to eliminate confusion
+- Use Darin 0.1.0 instead of 0.0.3 (that introduces renames)
+
 ## 0.0.4
 
 BREAKING CHANGE: Fixed the `Darin` widget only accepting a child, now it accepts a `WidgetBuilder` instead, because a `BuildContext` is required to actually use the new scope.
